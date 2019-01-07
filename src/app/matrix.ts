@@ -23,7 +23,17 @@ export class Matrix {
 	{
 		if( r < this.rowsNum )
 		{
-			this.rowsNum[r].setCell(c, cell);
+			this.rows[r].setCell(c, cell);
+		}
+	}
+
+	setStatus( r:number, c:number, status:string )
+	{
+		//console.log(this.rows);
+		if( r < this.rowsNum )
+		{
+			let cell:Cell = new Cell(status);
+			this.rows[r].setCell(c, cell);
 		}
 	}
 

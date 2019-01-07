@@ -10,15 +10,30 @@ import { Matrix } from '../matrix';
 })
 export class ConwayGridComponent implements OnInit {
 
-  matrix:Matrix  
-  r:number = 50
-  c:number = 50
+  private intervalId: number;
+  private matrix:Matrix  ;
+  private r:number = 50;
+  private c:number = 50;
 
   constructor() { 
   	this.matrix = new Matrix(this.r, this.c);
   }
 
   ngOnInit() {
+  	this.start()
   }
+
+  update()
+  {
+  	this.matrix.setStatus(Math.floor(Math.random() * 26),Math.floor(Math.random() * 26),"alive");
+  }
+
+  start(){
+	  this.intervalId = window.setInterval(() => {
+	      this.update();
+	    }, 200)
+  }
+
+
 
 }
