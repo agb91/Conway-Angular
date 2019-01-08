@@ -1,16 +1,13 @@
 export class Cell {
 
-	state:string;
+	state: string;
+	r: number;
+	c: number;
 
-	constructor(state?:string) { 
-      this.state = state ;
-    }
-
-    setState( state:string )
-    {
-   	  this.state = state;
-    }  
-
-
+	constructor(r: number, c: number, state: string) {
+		this.state = state;
+		this.r = r;
+		this.c = c;
+	}
 
 }
