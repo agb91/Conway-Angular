@@ -1,47 +1,31 @@
 import { Cell } from './cell';
-import { Row } from './row';
 
 export class Matrix {
 
 	rowsNum:number;
 	colsNum:number;
-	rows:Row[] = [];
-
-	getCell( r:number, c:number):Cell
-	{
-		if (r < this.rowsNum && c < this.colsNum)
-		{
-			return this.rows[r].getCell(c); 
-		}
-		else
-		{
-			return new Cell();
-		}
-	}
-
-	setCell( r:number, c:number, cell:Cell )
-	{
-		if( r < this.rowsNum )
-		{
-			this.rows[r].setCell(c, cell);
-		}
-	}
-
-	setStatus( r:number, c:number, status:string )
-	{
-		//console.log(this.rows);
-		if( r < this.rowsNum )
-		{
-			let cell:Cell = new Cell(status);
-			this.rows[r].setCell(c, cell);
-		}
-	}
+	matrix:Cell[][] = []; //yeah it is the right way
 
 	constructor(rowsNum: number, colsNum: number) {
-        this.rowsNum = rowsNum;
-        for (var _i = 0; _i < this.rowsNum; _i++) {
-		    let row = new Row( colsNum );
-		    this.rows.push( row );
+		this.rowsNum = rowsNum;
+		this.colsNum = colsNum;
+		this.matrix = [];
+        for (var r = 0; r < this.rowsNum; r++) {
+        	let row:Cell[] = [];
+        	for (var c = 0; c < this.colsNum; c++) {
+        		let cell:Cell = new Cell();
+        		row.push(cell);
+        	}
+        	this.matrix.push(row);
 		}
+		console.log( this.matrix );
     }
+
+    setState( r:number, c:number, state:string )
+    {
+    	
+    	this.matrix[r][c].setState(state);
+    	//console.log( this.matrix[r][c] );
+    }
+
 }

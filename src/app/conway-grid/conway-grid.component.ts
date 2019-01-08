@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { Cell } from '../cell';
-import { Row } from '../row';
 import { Matrix } from '../matrix';
 
 @Component({
@@ -20,18 +19,21 @@ export class ConwayGridComponent implements OnInit {
   }
 
   ngOnInit() {
-  	this.start()
+  		this.start();
   }
 
   update()
   {
-  	this.matrix.setStatus(Math.floor(Math.random() * 26),Math.floor(Math.random() * 26),"alive");
+  	let randomR = Math.floor(Math.random() * 40);
+  	let randomC = Math.floor(Math.random() * 40);
+  	this.matrix.setState(randomR, randomC, "alive" );
+  	//console.log(this.matrix.matrix[Math.floor(Math.random() * 26)][Math.floor(Math.random() * 26)] );
   }
 
   start(){
 	  this.intervalId = window.setInterval(() => {
 	      this.update();
-	    }, 200)
+	    }, 200);
   }
 
 

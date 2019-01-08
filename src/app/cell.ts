@@ -4,7 +4,12 @@ export class Cell {
 
 	constructor(state?:string) { 
       this.state = state ;
-   }  
+    }
+
+    setState( state:string )
+    {
+   	  this.state = state;
+    }  
 
 
 
